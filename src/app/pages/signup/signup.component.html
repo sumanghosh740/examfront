@@ -8,7 +8,7 @@
                     <img src="../../../assets/signup.png" class="img-fluid">
                 </div>
                 <h1 class="text-center">Register Here!!</h1>
-                {{user|json}}
+                <!-- {{user|json}} -->
                 <form (ngSubmit)="formSubmit()">
                     <!--Username field -->
                     <mat-form-field class="full-width" appearance="outline">
@@ -16,6 +16,7 @@
                         <input [(ngModel)]="user.username"
                         name="username"
                         matInput placeholder="Enter here">
+                        <mat-hint>*Username must be unique</mat-hint>
                     </mat-form-field>
 
                     <!-- Password field -->
