@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
     email: '',
     phone: '',
   };
+  confirmPassword = '';
 
   ngOnInit(): void {}
 
@@ -33,6 +34,13 @@ export class SignupComponent implements OnInit {
     } else if (this.user.password == '' || this.user.password == null) {
       // alert('Password is required');
       this.snack.open('Password is required', 'Ok', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+      });
+      return;
+    }
+    if (this.user.password !== this.confirmPassword) {
+      this.snack.open('Password should be matched ', 'Ok', {
         duration: 3000,
         verticalPosition: 'bottom',
       });
@@ -74,6 +82,7 @@ export class SignupComponent implements OnInit {
         // this.snack.open('Success', 'Ok', {
         //   duration: 3000,
         // });
+
         //sweetalert2
         Swal.fire('Success', 'User id is ' + data.id, 'success');
       },
@@ -84,7 +93,7 @@ export class SignupComponent implements OnInit {
         // this.snack.open('Something went wrong', 'Ok', {
         //   duration: 3000,
         // });
-        Swal.fire('Error', 'Something going wrong', 'error');
+        Swal.fire('Error', 'Something going wrong', 'error'); //sweetalert2
       }
     );
   }
