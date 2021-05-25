@@ -1,20 +1,47 @@
-<mat-card>
+<mat-card *ngIf="user">
     <h1>Your Profile Details</h1>
+    <!-- {{user | json}} -->
     <mat-card-content>
         <div class="bootstarp-wrapper">
             <div class="container">
                 <div class="container text-center ">
                     <img src="https://scontent.fccu3-1.fna.fbcdn.net/v/t1.6435-9/133503431_2311472818997686_3244486120050247882_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=gJJkCCQWl38AX8CLk-M&_nc_ht=scontent.fccu3-1.fna&oh=98bd1c91c5ce795eb37b6ca3bbf354a5&oe=60CFFE1E" class="profile-image">
-                    <h1 class="mt20">Suman Ghosh</h1>
+                    <h1 class="mt20">{{user.firstName}} {{user.lastName}}</h1>
                    
                 </div>
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
                         <!-- table details -->
-                        
+                        <table class="table text-center">
+                           
+                             <tr>
+                                <td>Username</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>User Id</td>
+                                <td>EXAM{{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>{{user.enable?"ACTIVE" : "NOT ACTIVE"}}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary">UPDATE</button>
+        <button mat-raised-button color="accent">SHARE</button>
+      </mat-card-actions>
 </mat-card>
